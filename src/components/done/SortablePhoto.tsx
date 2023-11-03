@@ -1,18 +1,12 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { FC } from 'react';
-
 import Image from './Image';
 
-interface Props {
-  id: number;
-  index: number;
-  url: string;
-  isFeatured: boolean;
-}
+export const SortablePhoto = (props) => {
+  console.log(props);
 
-const SortableImage: FC<Props> = (props) => {
-  const sortable = useSortable({ id: props.index });
+  console.log(props);
+  const sortable = useSortable({ id: props.url });
   const {
     attributes,
     listeners,
@@ -27,6 +21,8 @@ const SortableImage: FC<Props> = (props) => {
     transition,
   };
 
+  console.log('sortable photo');
+
   return (
     <Image
       ref={setNodeRef}
@@ -37,5 +33,3 @@ const SortableImage: FC<Props> = (props) => {
     />
   );
 };
-
-export default SortableImage;
