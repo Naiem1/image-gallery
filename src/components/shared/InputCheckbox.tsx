@@ -6,7 +6,6 @@ const Checkbox = () => {
   return (
     <FormGroup>
       <FormControlLabel
-        checked={true}
         control={<InputCheckbox defaultChecked />}
         label={`${3} File Selected`}
       />
