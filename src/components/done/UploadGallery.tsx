@@ -13,26 +13,14 @@ import {
   rectSortingStrategy,
 } from '@dnd-kit/sortable';
 import { useState } from 'react';
+import { Grid } from './Grid';
+import Image, { Photo } from './Image';
+import { SortablePhoto } from './SortablePhoto';
 
-import Grid from './Grid';
-import Image from './Image';
-import SortableImage from './SortableImage';
-
-interface ImageProps {
-  id: number;
-  url: string;
-  isFeatured: boolean;
-}
-
-interface setImages {
-  setImages: () => void;
-}
-
-type ImageArray = ImageProps[];
-
-const UploadGallery: React.FC = ({images,  setImages}) => {
+const UploadGallery = ({ images, setImages }) => {
   const [activeId, setActiveId] = useState(null);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+
   function handleDragStart(event) {
     setActiveId(event.active.id);
   }
@@ -55,6 +43,7 @@ const UploadGallery: React.FC = ({images,  setImages}) => {
   function handleDragCancel() {
     setActiveId(null);
   }
+
   return (
     <DndContext
       sensors={sensors}
@@ -65,11 +54,12 @@ const UploadGallery: React.FC = ({images,  setImages}) => {
     >
       <SortableContext items={images} strategy={rectSortingStrategy}>
         <Grid columns={5}>
-          {images.map((image, index) => (
-            <SortableImage key={image.id} url={image} index={index} />
+          {images.map((url, index) => (
+            <SortablePhoto key={url} url={url} index={index} />
           ))}
         </Grid>
       </SortableContext>
+
       <DragOverlay adjustScale={true}>
         {activeId ? (
           <Image url={activeId} index={images.indexOf(activeId)} />
