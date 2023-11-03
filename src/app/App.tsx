@@ -1,18 +1,18 @@
 import { Box, CssBaseline } from '@mui/material';
-import Gallery from '../pages/Gallery';
+import Home from '../pages/Home';
 
 const App = () => {
   return (
     <Box
       sx={{
-        display: 'grid',
-        placeItems: 'center',
         height: '100vh',
         bgcolor: '#EDF1F7',
+        display: 'grid',
+        placeItems: 'center',
       }}
     >
       <CssBaseline />
-      <Gallery />
+      <Home />
     </Box>
   );
 };
